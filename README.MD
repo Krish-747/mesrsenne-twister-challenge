@@ -1,30 +1,30 @@
-# Mersenee Twister Challenge
+# Mersene Twister Challenge
 
 ### Understanding the code
-The program first creates a random integer of length 32 bits and uses it to initialise a seed. The `getrandbit()` function then creates a random integer based on the seed. After that it creates 4 random numbers, and it **decrypts** the "[EXPLOIITM_MSG! ]..." message. Also another key thing to note is that the Initialisation Vector (IV) is the same as the Key. 
+The program first creates a random integer of length 32 bits and uses it to initialise a seed. The `getrandbit()` function then creates a random integer based on the seed. After that it creates 4 random numbers, and it **decrypts** the "[EXPLOIITM_MSG! ]..." message. Also another important thing to note is that the Initialisation Vector (IV) is the same as the Key. 
 
 ### Finding the first 4 numbers
 To find the first 4 numbers, we can use the given ciphertext and the plaintext.
 Let us split our ciphertext into 3 blocks of 16 bytes each. We can also observe that the first 1st and the 3rd block are the same.
 Examining the AES encryption algorithm:
-$ P_n = D(C_n) ⊕ C_n-1 $
-Here $P_$n is the plaintext block, D() is the decrypt function, C_n is the nth ciphertext block. For $n=0$, $C_{n-1} = IV$
+$` P_n = D(C_n) \oplus C_n-1 `$
+Here $`P_n`$ is the plaintext block, $D()$ is the decrypt function, $C_n$ is the nth ciphertext block. For $n=0$ , $C_{n-1} = IV$
 
 We also know that $C_0 = C_2$
 Therefore:
-$$P_0 = D(C_0) ⊕ IV \\
-P_1 = D(C_1) ⊕ C_0 \\
-P_2 = D(C_2) ⊕ C_1$$
+$$P_0 = D(C_0) \oplus IV \\
+P_1 = D(C_1) \oplus C_0 \\
+P_2 = D(C_2) \oplus C_1$$
 
-We also know that $D(C_0) = D(C_2)$ and let us assume it is some X
+We also know that $D(C_0) = D(C_2)$ and let us assume it is some $X$
 
 $$
-P_0 = X ⊕ IV \\
-X = P_0 ⊕ IV \\
-P_2 = X ⊕ C_1 \\
-P_2 = P_0 ⊕ IV ⊕ C_1 \\
+P_0 = X \oplus IV \\
+X = P_0 \oplus IV \\
+P_2 = X \oplus C_1 \\
+P_2 = P_0 \oplus IV \oplus C_1 \\
 \\
-IV = P_2 ⊕ P_0 ⊕ C_1$$
+IV = P_2 \oplus P_0 \oplus C_1$$
 
 Once we have found the IV, we can find the key (since IV = Key) and then we can split the key into 4 parts of 4 bytes each and convert them to integers (minding the big endian format).
 
