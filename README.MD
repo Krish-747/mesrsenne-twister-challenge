@@ -8,8 +8,8 @@ Another important thing to note is that the Initialisation Vector (IV) is the sa
 To find the first 4 numbers, we can use the given ciphertext and the plaintext.
 Let us split our ciphertext into 3 blocks of 16 bytes each. We can also observe that the first 1st and the 3rd block are the same.
 Examining the AES encryption algorithm:
-$` P_n = D(C_n) \oplus C_n-1 `$
-Here $`P_n`$ is the plaintext block, $D()$ is the decrypt function, $C_n$ is the nth ciphertext block. For $n=0$ , $C_{n-1} = IV$
+$ P_n = D(C_n) \oplus C_n-1 $
+Here $P_n$ is the plaintext block, $D()$ is the decrypt function, $C_n$ is the nth ciphertext block. For $n=0$ , $C_{n-1} = IV$
 
 We also know that $C_0 = C_2$
 Therefore:
