@@ -13,18 +13,26 @@ Here $P_n$ is the plaintext block, $D()$ is the decrypt function, $C_n$ is the n
 
 We also know that $C_0 = C_2$
 Therefore:
-$$P_0 = D(C_0) \oplus IV$$
-$$P_1 = D(C_1) \oplus C_0$$
-$$P_2 = D(C_2) \oplus C_1$$
+```math
+\begin{align*}
+P_0 = D(C_0) \oplus IV \\
+P_1 = D(C_1) \oplus C_0 \\
+P_2 = D(C_2) \oplus C_1
+\end{align*}
+```
 
 We also know that $D(C_0) = D(C_2)$ and let us assume it is some $X$
 
-$$P_0 = X \oplus IV$$
-$$X = P_0 \oplus IV$$
-$$P_2 = X \oplus C_1$$
-$$P_2 = P_0 \oplus IV \oplus C_1$$
-
-$$IV = P_2 \oplus P_0 \oplus C_1$$
+```math
+\begin{align*}
+P_0 = X \oplus IV \\
+X = P_0 \oplus IV \\
+P_2 = X \oplus C_1 \\
+P_2 = P_0 \oplus IV \oplus C_1 \\
+\\
+IV = P_2 \oplus P_0 \oplus C_1
+\end{align*}
+```
 
 Once we have found the IV, we can find the key (since IV = Key) and then we can split the key into 4 parts of 4 bytes each and convert them to integers (minding the big endian format).
 
