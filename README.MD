@@ -14,9 +14,9 @@ Here $P_n$ is the plaintext block, $D()$ is the decrypt function, $C_n$ is the n
 We also know that $C_0 = C_2$
 Therefore:
 ```math
-P_0 = D(C_0) \oplus IV \\
-P_1 = D(C_1) \oplus C_0 \\
-P_2 = D(C_2) \oplus C_1$$
+P_0 = D(C_0) \oplus IV \\\\
+P_1 = D(C_1) \oplus C_0 \\\\
+P_2 = D(C_2) \oplus C_1
 ```
 
 We also know that $D(C_0) = D(C_2)$ and let us assume it is some $X$
