@@ -18,7 +18,7 @@ Therefore:
 P_0 = D(C_0) \oplus IV \\
 P_1 = D(C_1) \oplus C_0 \\
 P_2 = D(C_2) \oplus C_1
-\end{gathern*}
+\end{gather*}
 ```
 
 We also know that $D(C_0) = D(C_2)$ and let us assume it is some $X$
